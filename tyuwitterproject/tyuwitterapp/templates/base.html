@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ツイッタラー</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!-- Header部分をblockで囲む -->
+    <header>
+        {% block header %}
+        <div class="title"><h3>𝐓𝐮𝐰𝐢𝐭𝐭𝐞𝐫</h3></div>
+        <div class="Recommend"><h2>𓂃 𓈒𓏸*̣̣̥ 𝐑𝐞𝐜𝐨𝐦𝐦𝐞𝐧𝐝 *̩̩͙໒꒱·ﾟ</h2></div>
+        <img class="profilepng" src="{% static 'profile.png' %}" width="50" height="50" alt="Profile Image">
+        {% endblock %}
+    </header>
+    <!-- コンテンツ部分 -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer部分をblockで囲む -->
+    <footer>
+        {% block footer %}
+        <ul class="flex-container">
+            <li class="flex-item"><a href="home.html"><img src="{% static 'home.png' %}" width="50" height="50" alt="Home"></a></li>
+            <li class="flex-item"><a href="search.html"><img src="{% static 'search.png' %}" height="50" width="50" alt="Search"></a></li>
+            <li class="flex-item"><a href="dm.html"><img src="{% static 'dm.png' %}" width="50" height="50" alt="Direct Message"></a></li>
+            <li class="flex-item"><a href="notice.html"><img src="{% static 'notice.png' %}" width="50" height="50" alt="Notifications"></a></li>
+        </ul>
+        {% endblock %}
+    </footer>
+</body>
+
+</html>

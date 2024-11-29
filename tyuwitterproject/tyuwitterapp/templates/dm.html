@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <header>
+        <div class="title"><h3>𝐓𝐮𝐰𝐢𝐭𝐭𝐞𝐫</h3></div>
+        <div class="Recommend"><h2>𓂃 𓈒𓏸*̣̣̥ 𝐑𝐞𝐜𝐨𝐦𝐦𝐞𝐧𝐝 *̩̩͙໒꒱·ﾟ</h2></div>
+        <img class="profilepng" src="{% static 'profile.png' %}" width="50" height="50" alt="Profile Image">
+    </header>
+
+    <hr>
+    <div class="tweet-info">
+        <img src="{% static 'profile.png' %}" width="50" height="50" alt="Profile Image">
+        <div>
+            <p><span>@King Gnu_JP</span></p>
+            <p>2024/7/26</p>
+        </div>
+    </div>
+
+    <div class="tweet-content">
+        <p>㊗「SPECIALZ」<br>MUSIC VIDEO 100M views!!!!!!!!!!<br>1億回再生突破 THX🥹🤗❤️‍🔥<br>⏩
+        <a href="https://t.co/0dR2Vuo1p4" target="_blank">https://t.co/0dR2Vuo1p4</a></p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fhzKLBZJC3w?si=CqQdItxXuD8eCVCu"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div class="tweet-actions">
+        <button class="comment-button">💬</button>
+        <button class="like-button">♡</button>
+    </div>
+
+    <hr>
+    <a href="tui-to.html"><button type="button" class="btn btn-light">ツイートする</button></a>
+    <hr>
+{% endblock %}
