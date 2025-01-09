@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block name %}Recommend{% endblock %}
+{% block content %}
+        {% for record in orderby_records %}
+
+        {{record.user.username}}
+        <br>
+        <div class="posted_at">
+        {{record.posted_at}}に投稿されました<a href="{% url 'tyuwitterapp2:detail' record.pk %}">詳細表示</a></div>
+        <p>{{ record.content }}</p>
+        <hr>
+        {% endfor %}
+
+
+    <div class="tweet-actions">
+        <button class="comment-button">💬</button>
+        <button class="like-button">♡</button>
+    </div>
+
+    <hr>
+    <a href="{% url 'tyuwitterapp2:post' %}"><button type="button" class="btn btn-light">𝐓𝐲𝐮𝐰𝐞𝐞𝐭</button></a>
+    <hr>
+{% endblock %}

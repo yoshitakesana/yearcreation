@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ツイッタラー</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+
+<body>
+    <li><a href="{% url 'accounts:signup' %}"class="text-white"></a>
+        </a></li>e">サインアップ</a></li>
+
+    <!-- Header部分をblockで囲む -->
+    <header>
+
+        <a href="{% url 'tyuwitterapp2:index' %}"><div class="title"><h3>𝐓𝐮𝐰𝐢𝐭𝐭𝐞𝐫</h3></div></a>
+        <div class="Recommend"><h2>𓂃 𓈒𓏸*̣̣̥ {% block name %}{% endblock %} *̩̩͙໒꒱·ﾟ</h2></div>
+        <a href="{% url 'tyuwitterapp2:profile' %}"><img class="profilepng" src="{% static 'img/profile.png' %}" width="50" height="50" alt="プロフィール画像"></a>
+    </header>
+    <!-- コンテンツ部分 -->
+    <main>
+        {% block content %}{% endblock %}
+        <!--ナビゲーションメニュー-->
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'tyuwitterapp2:profile' %}"
+        class="text-white">𝐌𝐲 𝐏𝐚𝐠𝐞</a></li>
+        <li><a href="{% url 'accounts:logout' %}"
+        class="text-white">𝐋𝐨𝐠𝐨𝐮𝐭</a></li>
+        <li><a href="{% url 'password_reset' %}"
+            class="text-white">𝐑𝐞𝐬𝐞𝐭 𝐏𝐚𝐬𝐬𝐰𝐨𝐫𝐝</a></li>
+        <li><a  href="{% url 'tyuwitterapp2:contact' %}">𝐂𝐨𝐧𝐭𝐚𝐜𝐭
+            {% else %}
+            <!--ログイン状態ではない場合のメニュー-->
+
+        <li><a href="{% url 'accounts:signup' %}" class="text-white">𝐒𝐢𝐠𝐧 𝐔𝐩</a></li>
+        <li><a href="{% url 'accounts:login' %}" class="text-white">𝐋𝐨𝐠𝐢𝐧</a></li>
+        <li><a  href="{% url 'tyuwitterapp2:contact' %}">𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a></li>
+        {% endif %}
+    </main>
+
+    <!-- Footer部分をblockで囲む -->
+    <footer>
+        {% block footer %}
+        <ul class="flex-container">
+            <li class="flex-item"><a href="{% url 'tyuwitterapp2:index' %}"><img src="{% static 'img/home.jpg' %}" width="50" height="50" alt="index"></a></li>
+        <li class="flex-item"><a href="{% url 'tyuwitterapp2:search' %}"><img src="{% static 'img/search.jpg' %}" height="50" width="50" alt="Search"></a></li>
+        <li class="flex-item"><a href="{% url 'tyuwitterapp2:dm' %}"><img src="{% static 'img/dm.jpg' %}" width="50" height="50" alt="Direct Message"></a></li>
+        <li class="flex-item"><a href="{% url 'tyuwitterapp2:notice' %}"><img src="{% static 'img/notice.jpg' %}" width="50" height="50" alt="Notifications"></a></li>
+        </ul>
+        {% endblock %}
+    </footer>
+</body>
+
+</html>

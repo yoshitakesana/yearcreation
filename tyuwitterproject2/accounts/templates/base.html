@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ツイッタラー{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'accounts:signup' %}" class="text-white">サインアップ</a></li>
+                <li><a href="{% url 'accounts:login' %}" class="text-white">ログイン</a></li>
+                <li><a href="{% url 'tyuwitterapp2:index' %}" class="text-white">ホーム</a></li>
+                <li><a href="{% url 'tyuwitterapp2:profile' %}" class="text-white">プロフィール</a></li>
+                <li><a href="{% url 'tyuwitterapp2:contact' %}" class="text-white">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 𝐓𝐮𝐰𝐢𝐭𝐭𝐞𝐫</p>
+    </footer>
+</body>
+
+</html>

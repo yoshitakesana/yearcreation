@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block name %}{% endblock %}
+{% block title %}投稿完了{% endblock %}
+
+{% block content %}
+    <h2>投稿が完了しました！</h2>
+    <p>あなたの投稿が正常に完了しました。</p>
+    <a href="{% url 'tyuwitterapp2:index' %}" class="btn btn-primary">ホームに戻る</a>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+    <a href="{% url 'tyuwitterapp2:index' %}"><div class="title"><h3>𝐓𝐲𝐮𝐰𝐢𝐭𝐭𝐞𝐫</h3></div></a>
+    <div class="Recommend"><h2>𓂃 𓈒𓏸*̣̣̥ 𝐍𝐨𝐭𝐢𝐜𝐞 *̩̩͙໒꒱·ﾟ</h2></div>
+    <a href="{% url 'tyuwitterapp2:profile' %}"><img class="profilepng" src="{% static 'img\profile.png' %}" width="50" height="50" alt="Profile Image"></a>
+{% endblock %}
+{% block content %}
+        <div class="notifications">
+            <h2>通知</h2>
+            {% if notifications %}
+                <ul>
+                    {% for notification in notifications %}
+                        <li class="notification-item">
+                            <img src="{% static 'img/profile.png' %}" width="50" height="50" alt="Profile Image">
+                            <div class="notification-content">
+                                <p><strong>{{ notification.user }}</strong> さんがあなたの投稿にいいねしました。</p>
+                                <p>{{ notification.timestamp }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong>通知はありません</strong>
+            {% endif %}
+        </div>
+
+{% endblock %}

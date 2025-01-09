@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block header %}
+    <a href="{% url 'tyuwitterapp2:index' %}">
+        <div class="title"><h3>𝐓𝐮𝐰𝐢𝐭𝐭𝐞𝐫</h3></div>
+    </a>
+    <div class="Recommend"><h2>𓂃 𓈒𓏸*̣̣̥ Search *̩̩͙໒꒱·ﾟ</h2></div>
+    <a href="{% url 'tyuwitterapp2:profile' %}">
+        <img class="profilepng" src="{% static 'img/profile.png' %}" width="50" height="50" alt="プロフィール画像">
+    </a>
+    <!-- 検索ボックスを追加 -->
+    <form action="{% url 'tyuwitterapp2:search' %}" method="get">
+        <input type="text" name="q" placeholder="検索...">
+        <button type="submit">検索</button>
+    </form>
+{% endblock %}
+    {% block content %}
+    <!---<div class="search-results">
+        <h2>検索結果</h2>
+        {%if results %}
+            <ul>
+                {% for result in results %}
+                    <li>
+                        <a href="{% url 'tyuwitterapp2:post' result.id %}">
+                            <p>{{ result.content }}</p>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>検索結果はありませんでした😿</p>
+        {% endif %}
+    </div>--->
+
+
+{% endblock %}

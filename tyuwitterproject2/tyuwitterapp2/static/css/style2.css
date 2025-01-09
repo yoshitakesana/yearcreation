@@ -1,0 +1,255 @@
+@charset "utf-8";
+
+/* 基本フォントサイズを設定 */
+body {
+    font-size: 18px;
+    color: #80755f;
+}
+
+/* 背景色を設定 */
+body {
+    background-color: #fffbe5; /* 明るい背景色 */
+}
+
+/* ヘッダーのスタイル */
+header {
+    position: fixed; /* 固定位置に変更 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5a834; /* ヘッダーの背景色 */
+    height: 100px; /* ヘッダーの高さ */
+    z-index: 1000; /* ヘッダーを最前面に表示 */
+}
+
+/* コンテンツのスタイル */
+main {
+    margin-top: 90px; /* ヘッダーの高さ分のマージンを追加 */
+    padding-top: 0px; /* コンテンツの上にパディングを追加 */
+}
+
+.Recommend {
+    text-align: center;
+    color: #642000;
+}
+
+.title {
+    position: absolute;
+    left: 55px; /* 左端に配置 */
+    top: 0px; /* 垂直方向で画面中央に配置 */
+    height: 35px;
+}
+
+.title h3 {
+    margin: 0;
+    top: 10px;
+    color: #642000;
+}
+
+.setting-icon {
+    position: absolute;
+    right: 10px;
+    margin-top: 1px !important;
+}
+
+.profilepng {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 0 !important; /* 既存のマージンをリセット */
+}
+
+/* リンクのスタイル */
+a {
+    color: black; /* 通常のリンクの色 */
+}
+
+a:visited {
+    color: #405173; /* 訪問済みリンクの色 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover {
+    color: #405173; /* ホバー時の色 */
+    font-weight: bold; /* ホバー時に太字 */
+    text-decoration: none; /* 下線を消す */
+}
+
+/* フレックスボックスのコンテナ */
+.flex-container {
+    display: flex; /* フレックスボックスを有効化 */
+}
+
+/* フレックスアイテムのスタイル */
+.flex-item {
+    margin: auto; /* 自動マージンで中央揃え */
+}
+
+/* 名前表示のスタイル */
+.name span {
+    margin-left: auto; /* 自動マージンで右寄せ */
+}
+
+/* 投稿ボタンの位置 */
+header #post {
+    float: right; /* 右に浮かせる */
+    margin: -50px 0 0; /* 上にマージンを追加 */
+}
+
+/* ツイートボタンのスタイル */
+.btn {
+    background-color: #ffb009; /* ツイートボタンの背景色 (Twitterのブランド色) */
+    color: white; /* テキストの色 */
+    border: none; /* ボーダーなし */
+    border-radius: 5px; /* 角を丸くする */
+    padding: 10px 15px; /* ボタンの内側にパディング */
+    cursor: pointer; /* カーソルをポインターに */
+    transition: background-color 0.3s, transform 0.2s; /* ホバー時のエフェクトを設定 */
+}
+
+/* ホバー時のツイートボタンのスタイル */
+.btn:hover {
+    background-color: #78b951; /* ホバー時の背景色 */
+    transform: scale(1.05); /* ホバー時に少し大きくする */
+}
+
+.btn-light:hover {
+    background-color: #78b951; /* ホバー時の背景色を変更 */
+}
+
+.tweet-header {
+    display: flex; /* フレックスボックスを使う */
+    align-items: center; /* 垂直方向に中央揃え */
+}
+
+.tweet-header img {
+    margin-right: 10px;
+}
+
+.tweet-info {
+    margin-left: 10px; /* 画像とテキストの間にスペースを追加 */
+}
+
+.tweet-info p {
+    margin: 0; /* 上下のマージンをゼロにする */
+    line-height: 1.2; /* 行の高さを調整して余白を少なくする */
+}
+
+.like-button {
+    background-color: transparent; /* 背景を透明に */
+    border: none; /* ボーダーをなしに */
+    font-size: 24px; /* サイズ調整 */
+    cursor: pointer; /* カーソルをポインターに */
+    color: #1DA1F2; /* ツイッターの青 */
+    transition: color 0.3s; /* ホバー時の色変更をスムーズに */
+}
+
+.like-button:hover {
+    color: #e0245e; /* ホバー時に赤に変更 */
+}
+
+.comment-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #1DA1F2;
+    transition: color 0.3s;
+}
+
+.comment-button:hover {
+    color: #e0245e;
+}
+
+.search-form {
+    position: absolute; /* 絶対位置を使用 */
+    top: 30px; /* 上からの位置 */
+    right: 100px; /* 右からの距離 */
+}
+
+.search-form input[type="submit"] {
+    padding: 0px 10px; /* 内側の余白 */
+    margin-left: 5px; /* 検索ボックスとの間に余白 */
+}
+/* nav-item の位置を下げる */
+.nav-item {
+    margin-top: 20px; /* nav-item の上に余白を追加 */
+}
+
+.posted_at {
+    margin-left:20px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-group {
+    margin-bottom: 15px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.contact-form button {
+    background-color: #ffb009;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.contact-form button:hover {
+    background-color: #78b951;
+    transform: scale(1.05);
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.col {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #ffb009;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #78b951;
+    transform: scale(1.05);
+}

@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'tyuwitter.urls'
+ROOT_URLCONF = 'tyuwitterapp.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'tyuwitter.wsgi.application'
+WSGI_APPLICATION = 'tyuwitterapp.wsgi.application'
 
 
 # Database

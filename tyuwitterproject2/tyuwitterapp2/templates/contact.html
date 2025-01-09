@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block name %}𝐂𝐨𝐧𝐭𝐚𝐜𝐭{% endblock %}
+{% block content %}
+<div class="contact-form">
+    <h1>𝐂𝐨𝐧𝐭𝐚𝐜𝐭</h1>
+    <p>𝐈 𝐰𝐢𝐥𝐥 𝐫𝐞𝐩𝐥𝐲 𝐚𝐬 𝐬𝐨𝐨𝐧 𝐚𝐬 𝐩𝐨𝐬𝐬𝐢𝐛𝐥𝐞⟡</p>
+    <p>𝐀𝐬𝐤 𝐦𝐞 𝐚𝐧𝐲𝐭𝐡𝐢𝐧𝐠ʕ·ᴥ·ʔ</p>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                {{ message }}
+            </li>
+            {% endfor %}
+            <br>
+        </ul>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">送信する</button>
+    </form>
+</div>
+{% endblock %}
