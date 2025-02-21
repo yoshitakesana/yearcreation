@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView,DetailView,UpdateView
 from .models import Post
 from django.views.generic import FormView
 from .forms import ContactForm
@@ -11,6 +11,7 @@ from django.urls import reverse_lazy
 from .forms import PostForm
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 class IndexView(ListView):
     template_name='index.html'
@@ -86,8 +87,31 @@ class ContactView(FormView):
             self.request,'お問い合わせメールは正常に送信されました！')
         return super().form_valid(form)
 
+class SearchResultsView(ListView):
+    model = Post
+    template_name = 'search_results.html'
+    context_object_name = 'results'
 
-# class SignupView(TemplateView):
+    def get_queryset(self):
+        query = self.request.GET.get('q')  # GETパラメータから検索クエリを取得
+        if query:
+            return Post.objects.filter(
+                Q(content__icontains=query)
+            )  # 内容に一致する投稿を検索
+        return Post.objects.none()  # クエリがない場合は空の結果を返す
+class UploadIconView(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name='upload_icon.html'
+
+    success_url = reverse_lazy('tyuwitterapp2:profile')
+    def form_valid(self, form):
+        postdata = form.save(commit=False)
+        postdata.user = self.request.user
+        postdata.save()
+        return super().form_valid(form)
+
+#class SignupView(TemplateView):
 #     template_name = 'signup.html'
 
 # class FollowView(TemplateView):

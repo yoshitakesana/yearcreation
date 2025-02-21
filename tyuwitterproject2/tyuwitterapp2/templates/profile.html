@@ -4,14 +4,17 @@
 {% block name %}𝐌𝐲 𝐏𝐫𝐨𝐟𝐢𝐥𝐞{% endblock %}
 {% block header %}
 <a href="{% url 'tyuwitterapp2:index' %}"><div class="title"><h3>𝐓𝐮𝐰𝐢𝐭𝐭𝐞𝐫</h3></div></a>
-        <div class="Recommend"><h2>𓂃 𓈒𓏸*̣̣̥ Profile *̩̩͙໒꒱·ﾟ</h2></div>
         <a href="{% url 'tyuwitterapp2:profile' %}"><img class="profilepng" src="{% static 'img/profile.png' %}" width="50" height="50" alt="Profile Image"></a>
 {% endblock %}
 
 {% block content %}
 <div class="profile">
     <img src="{% static 'img/profile.png' %}" width="50" height="50" alt="Profile Image">
-    <input type="submit" id="submit_button" value="編集">
+    {% if user.is_authenticated %}
+    <a href="{% url 'tyuwitterapp2:upload_icon' user.pk %}">アイコンを編集</a>
+    {% endif %}
+
+    <!--<input type="submit" id="submit_button" value="編集">-->
     <strong><p>{{ user.username }}</p></strong>
     <p>{{ user.email }}</p>
     <p>{{ user.profile.bio }}</p>

@@ -24,4 +24,6 @@ urlpatterns = [
         name='detail'
     ),
     path('contact/', views.ContactView.as_view(), name='contact'),  # お問い合
+    path('search_results/', views.SearchResultsView.as_view(), name='search_results'),
+    path('upload_icon/<int:pk>', views.UploadIconView.as_view(), name='upload_icon'),
 ]

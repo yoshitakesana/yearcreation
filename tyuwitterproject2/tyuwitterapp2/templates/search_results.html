@@ -1,0 +1,27 @@
+<!-- search_results.html -->
+{% extends 'base.html' %}
+{% block name %}𝐒𝐞𝐚𝐫𝐜𝐡 𝐑𝐞𝐬𝐮𝐥𝐭𝐬{% endblock %}
+{% block header %}
+    <a href="{% url 'tyuwitterapp2:index' %}">
+        <div class="title"><h3>𝐓𝐮𝐰𝐢𝐭𝐭𝐞𝐫</h3></div>
+    </a>
+{% endblock %}
+
+{% block content %}
+    <div class="search-results">
+        <h2>𝐒𝐞𝐚𝐫𝐜𝐡 𝐫𝐞𝐬𝐮𝐥𝐭𝐬</h2>
+        {% if results %}
+            <ul>
+                {% for result in results %}
+                    <li>
+                        <a href="{% url 'tyuwitterapp2:detail' result.id %}">
+                            <p>{{ result.content }}</p>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>検索結果はありませんでした😿</p>
+        {% endif %}
+    </div>
+{% endblock %}

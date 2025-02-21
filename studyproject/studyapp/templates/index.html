@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勉強管理アプリ</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 外部CSSファイルをリンク -->
+</head>
+<body>
+
+<div class="container">
+    <h1>勉強管理アプリ</h1>
+    
+    <!-- 入力フォーム -->
+    <div class="input-container">
+        <label for="subject">科目名:</label>
+        <input type="text" id="subject" placeholder="科目名を入力">
+    </div>
+    
+    <div class="input-container">
+        <label for="study-time">勉強時間 (分):</label>
+        <input type="number" id="study-time" placeholder="時間 (分)">
+    </div>
+    
+    <div class="input-container">
+        <button id="add-study">勉強記録を追加</button>
+    </div>
+
+    <!-- 勉強記録リスト -->
+    <ul class="study-list" id="study-list">
+        <!-- 勉強記録がここに追加されます -->
+    </ul>
+</div>
+
+<script>
+    document.getElementById('add-study').addEventListener('click', function() {
+        // 入力された科目名と勉強時間を取得
+        const subject = document.getElementById('subject').value;
+        const studyTime = document.getElementById('study-time').value;
+
+        // 入力内容が空でないか確認
+        if (subject && studyTime) {
+            const studyList = document.getElementById('study-list');
+            
+            // 新しいリスト項目を作成
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span>${subject} - ${studyTime}分</span>
+                <button class="remove-study">削除</button>
+            `;
+            
+            // 削除ボタンのイベントリスナーを追加
+            li.querySelector('.remove-study').addEventListener('click', function() {
+                studyList.removeChild(li);
+            });
+            
+            // リストに新しいアイテムを追加
+            studyList.appendChild(li);
+            
+            // 入力欄をリセット
+            document.getElementById('subject').value = '';
+            document.getElementById('study-time').value = '';
+        } else {
+            alert('科目名と勉強時間を入力してください');
+        }
+    });
+</script>
+
+</body>
+</html>
