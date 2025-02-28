@@ -10,11 +10,9 @@
 {% block content %}
 <div class="profile">
     <img src="{% static 'img/profile.png' %}" width="50" height="50" alt="Profile Image">
-    {% if user.is_authenticated %}
-    <a href="{% url 'tyuwitterapp2:upload_icon' user.pk %}">アイコンを編集</a>
-    {% endif %}
+    <a href="{% url 'tyuwitterapp2:upload_icon' %}">アイコンを編集</a>
 
-    <!--<input type="submit" id="submit_button" value="編集">-->
+    <input type="submit" id="submit_button" value="編集">
     <strong><p>{{ user.username }}</p></strong>
     <p>{{ user.email }}</p>
     <p>{{ user.profile.bio }}</p>

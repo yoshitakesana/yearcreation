@@ -25,3 +25,14 @@ class PostForm(ModelForm):
     class Meta:
         model=Post
         fields=['content','image1','image2']
+
+from django import forms
+from .models import Comment
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 2, 'placeholder': 'コメントを書く...'})
+        }

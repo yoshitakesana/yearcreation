@@ -14,6 +14,23 @@
     <p>{{post.content}}</p>
     <hr>
     <br>
+    {% for comment in comments %}
+    <div>
+        <p><strong>{{ comment.user.username }}</strong>: {{ comment.content }}</p>
+        <p style="font-size: small; color: gray;">{{ comment.created_at }}</p>
+    </div>
+{% empty %}
+    <p>コメントはまだありません。</p>
+{% endfor %}
+
+<hr>
+
+<h3>コメントを投稿</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">コメントする</button>
+</form>
     <a href="{% url 'tyuwitterapp2:index' %}" class="btn btn-primary">Back to Tyuwitter</a>
 <hr>
     </a>

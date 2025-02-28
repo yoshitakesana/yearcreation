@@ -1,4 +1,5 @@
 from django.urls import path
+
 from . import views
 
 app_name='tyuwitterapp2' #URLconfを逆引き参照できるようにアプリ名を登録
@@ -19,10 +20,11 @@ urlpatterns = [
     #path('login/',views.LoginView.as_view(),name='login'), #ログイン
     path('post_done/',views.PostDoneView.as_view(),name='post_done'), #投稿完了ページ
     path(
-        'Post-detail/<int:pk>/',
+        'Post/<int:pk>/',
         views.PostDetailView.as_view(),#投稿詳細がこっち
         name='detail'
     ),
     path('contact/', views.ContactView.as_view(), name='contact'),  # お問い合
     path('search_results/', views.SearchResultsView.as_view(), name='search_results'),
+    path('upload_icon/', views.UploadIconView.as_view(), name='upload_icon'),
 ]

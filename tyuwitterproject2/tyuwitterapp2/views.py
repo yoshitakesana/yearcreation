@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
-from django.views.generic import ListView,DetailView,UpdateView
+from django.views.generic import ListView,DetailView
 from .models import Post
 from django.views.generic import FormView
 from .forms import ContactForm
@@ -12,6 +12,12 @@ from .forms import PostForm
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Post, Comment
+from .forms import CommentForm
+from django.urls import reverse
+from django.views.generic import DetailView, FormView
+from django.views.generic.edit import FormMixin
 
 class IndexView(ListView):
     template_name='index.html'
@@ -99,32 +105,32 @@ class SearchResultsView(ListView):
                 Q(content__icontains=query)
             )  # 内容に一致する投稿を検索
         return Post.objects.none()  # クエリがない場合は空の結果を返す
-class UploadIconView(UpdateView):
-    model = Post
-    form_class = PostForm
+class UploadIconView(TemplateView):
     template_name='upload_icon.html'
 
-    success_url = reverse_lazy('tyuwitterapp2:profile')
-    def form_valid(self, form):
-        postdata = form.save(commit=False)
-        postdata.user = self.request.user
-        postdata.save()
-        return super().form_valid(form)
+class PostDetailView(FormMixin, DetailView):
+    model = Post
+    template_name = 'post.html'
+    context_object_name = 'post'
+    form_class = CommentForm
 
-#class SignupView(TemplateView):
-#     template_name = 'signup.html'
+    def get_success_url(self):
+        return reverse('tyuwitterapp2:detail', kwargs={'pk': self.object.pk})
 
-# class FollowView(TemplateView):
-#     template_name = 'follow.html'
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = self.object
+            comment.user = request.user
+            comment.save()
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
-# class FollowerView(TemplateView):
-#     template_name = 'follower.html'
-
-# class DetailView(TemplateView):
-#     template_name = 'detail.html'
-
-# class LoginView(TemplateView):
-#     template_name = 'login.html'
-
-# class CreateDoneView(TemplateView):
-#     template_name = 'create_done.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = self.object.comments.all()
+        context['form'] = self.get_form()
+        return context

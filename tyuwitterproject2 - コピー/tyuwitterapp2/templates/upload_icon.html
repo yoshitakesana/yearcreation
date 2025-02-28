@@ -1,0 +1,7 @@
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="icon">アイコンを選択:</label>
+    <input type="file" name="icon" id="icon" required>
+    <button type="submit">アップロード</button>
+</form>
