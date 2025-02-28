@@ -1,0 +1,35 @@
+<!-- ツイートするページ -->
+{% extends 'base.html' %}
+
+{% block name %}𝐓𝐲𝐮𝐰𝐞𝐞𝐭{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col offset-2">
+            <!-- ファイルをアップロードする場合は
+                enctype="multipart/form-data"が必要 -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                        <th>𝐂𝐨𝐧𝐭𝐞𝐧𝐭</th>
+                        <td>{{ form.content }}</td>
+                    </tr>
+                    <tr>
+                        <th>𝐈𝐦𝐚𝐠𝐞𝟏</th>
+                        <td>{{ form.image1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>𝐈𝐦𝐚𝐠𝐞𝟐
+                        </th>
+                        <td>{{ form.image2 }}</td>
+                    </tr>
+                </table>
+                <hr>
+                <button type="submit" class="btn btn-light">𝐓𝐲𝐮𝐰𝐞𝐞𝐭</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
